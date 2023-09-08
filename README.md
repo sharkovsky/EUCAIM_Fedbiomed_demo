@@ -5,7 +5,7 @@ Fed-BioMed demonstrator for the EUCAIM project M9 milestone
 
 First, clone the fedbiomed directory
 ```bash
-git clone --depth 1 master git@github.com:fedbiomed/fedbiomed.git
+git clone master git@github.com:fedbiomed/fedbiomed.git
 export FEDBIOMED_DIR=$PWD/fedbiomed
 ```
 
@@ -111,7 +111,7 @@ nohup ./scripts/fedbiomed_run node start >./fedbiomed_node.out &
 
 First clone fedbiomed if you haven't done so yet
 ```bash
-git clone --depth 1 --branch master git@github.com:fedbiomed/fedbiomed.git
+git clone --branch master git@github.com:fedbiomed/fedbiomed.git
 export FEDBIOMED_DIR=$PWD/fedbiomed
 cd envs/vpn/docker
 ```
