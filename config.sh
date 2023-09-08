@@ -2,8 +2,8 @@
 
 git clone --depth 1 --branch v4.4.3 git@github.com:fedbiomed/fedbiomed.git
 
+mkdir fedbiomed/etc
 cp etc/* fedbiomed/etc/
-
 
 cd demo_ml
 git clone --depth 1 git@github.com:EUCAIM/demo_ml_data.git
