@@ -27,8 +27,8 @@ Copy the node's configuration provided in the repo to the fedbiomed directory
 ```bash
 data_provider=bsc  # other options: ub, forth
 mkdir fedbiomed/etc
-cp etc/${data_provider}.json fedbiomed/etc/
-cp ../demo_ml/${data_provider}.json fedbiomed/etc
+cp etc/${data_provider}.json fedbiomed/envs/vpn/docker/node/run_mounts/etc
+cp ../demo_ml/${data_provider}.json fedbiomed/envs/vpn/docker/node/run_mounts/data
 export FEDBIOMED_DIR=$PWD/fedbiomed
 ```
 
