@@ -52,7 +52,7 @@ Then start your node
 ```bash
 cd ${FEDBIOMED_DIR}/envs/vpn/docker
 docker-compose exec -u $(id -u) node bash -ci 'export MPSPDZ_IP=$VPN_IP && export MPSPDZ_PORT=14001 && export MQTT_BROKER=10.220.0.2 && export MQTT_BROKER_PORT=1883 && export UPLOADS_URL="http://10.220.0.3:8000/upload/" && export PYTHONPATH=/fedbiomed && export FEDBIOMED_NO_RESET=1 && eval "$(conda shell.bash hook)" && conda activate fedbiomed-node && bash'
-`
+```
 
 This will open a shell on the container. From that shell you can add a dataset
 ```bash
