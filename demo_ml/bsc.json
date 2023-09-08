@@ -3,5 +3,6 @@
     "data_type": "csv",
     "tags": "eucaim_demo_ml",
     "description": "",
-    "path": "../demo_ml/demo_ml_data/data/three_dataseties_scenario/z3_1.csv"
+    "path": "./envs/vpn/docker/node/run_mounts/data/demo_ml_data/data/three_dataseties_scenario/z3_1.csv"
 }
+
