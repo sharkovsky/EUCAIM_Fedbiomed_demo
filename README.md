@@ -5,7 +5,7 @@ Fed-BioMed demonstrator for the EUCAIM project M9 milestone
 
 First, clone the fedbiomed directory
 ```bash
-git clone --depth 1 --branch v4.4.3 git@github.com:fedbiomed/fedbiomed.git
+git clone --depth 1 master git@github.com:fedbiomed/fedbiomed.git
 export FEDBIOMED_DIR=$PWD/fedbiomed
 ```
 
@@ -14,7 +14,7 @@ export FEDBIOMED_DIR=$PWD/fedbiomed
 You may find deployment instructions for Fed-BioMed at the following [link](https://fedbiomed.org/latest/user-guide/deployment/deployment-vpn/#deploy-on-the-node-side). 
 Specifically, you should only follow the instructions under the heading "Deploy on the node side". 
 Basically, they amount to 
-1. building one (or two if you also want the gui) docker image
+1. building one docker image (you may only build the `node` image, and avoid the `gui` image)
 2. copying a vpn configuration file to a predefined path/name in the docker container
 3. generating a public vpn key
 
@@ -52,7 +52,7 @@ Then start your node
 ```bash
 cd ${FEDBIOMED_DIR}/envs/vpn/docker
 docker-compose exec -u $(id -u) node bash -ci 'export MPSPDZ_IP=$VPN_IP && export MPSPDZ_PORT=14001 && export MQTT_BROKER=10.220.0.2 && export MQTT_BROKER_PORT=1883 && export UPLOADS_URL="http://10.220.0.3:8000/upload/" && export PYTHONPATH=/fedbiomed && export FEDBIOMED_NO_RESET=1 && eval "$(conda shell.bash hook)" && conda activate fedbiomed-node && bash'
-```
+`
 
 This will open a shell on the container. From that shell you can add a dataset
 ```bash
@@ -106,4 +106,56 @@ Start the node in the background
 ```bash
 nohup ./scripts/fedbiomed_run node start >./fedbiomed_node.out &
 ```
+
+## Instructions for the data scientist
+
+First clone fedbiomed if you haven't done so yet
+```bash
+git clone --depth 1 --branch master git@github.com:fedbiomed/fedbiomed.git
+export FEDBIOMED_DIR=$PWD/fedbiomed
+cd envs/vpn/docker
+```
+
+Build the container
+```bash
+${FEDBIOMED_DIR}/scripts/fedbiomed_vpn build researcher
+```
+
+Copy the VPN configuration file that was provided to you via email to the appropriate location
+```bash
+cp config.env ./researcher/run_mounts/config/config.env
+```
+
+Retrieve the public key
+```bash
+docker-compose exec researcher wg show wg0 public-key | tr -d '\r' >/tmp/publickey-researcher
+```
+
+Send the public key via email to [francesco.cremonesi@inria.fr](mailto:francesco.cremonesi@inria.fr).
+
+Create the fedbiomed configuration for the researcher
+```bash
+docker-compose exec -u $(id -u) researcher bash -ci 'export MPSPDZ_IP=$VPN_IP && export MPSPDZ_PORT=14001 && export MQTT_BROKER=10.220.0.2 && export MQTT_BROKER_PORT=1883 && export UPLOADS_URL="http://10.220.0.3:8000/upload/" && export PYTHONPATH=/fedbiomed && export FEDBIOMED_NO_RESET=1 && eval "$(conda shell.bash hook)" && conda activate fedbiomed-researcher && ./scripts/fedbiomed_run researcher configuration create'
+```
+
+Copy the training files to the appropriate location
+
+```bash
+mkdir ${FEDBIOMED_DIR}/envs/vpn/docker/researcher/run_mounts/samples/demo_ml/
+mkdir ${FEDBIOMED_DIR}/envs/vpn/docker/researcher/run_mounts/samples/demo_dl/
+cp ${EUCAIM_DEMO_DIR}/demo_ml/federated_training.py ${FEDBIOMED_DIR}/envs/vpn/docker/researcher/run_mounts/samples/demo_ml/
+cp ${EUCAIM_DEMO_DIR}/demo_dl/federated_training.py ${FEDBIOMED_DIR}/envs/vpn/docker/researcher/run_mounts/samples/demo_dl/
+```
+
+Finally, start the container
+
+```bash
+docker-compose exec -u $(id -u) researcher bash -ci 'export MPSPDZ_IP=$VPN_IP && export MPSPDZ_PORT=14000 && export MQTT_BROKER=10.220.0.2 && export MQTT_BROKER_PORT=1883 && export UPLOADS_URL="http://10.220.0.3:8000/upload/" && export PYTHONPATH=/fedbiomed && export FEDBIOMED_NO_RESET=1 && eval "$(conda shell.bash hook)" && conda activate fedbiomed-researcher && bash'
+```
+
+From within the container, you may run the federated training
+```bash
+python /fedbiomed/notebooks/samples/demo_ml/federated_training.py
+```
+
 
