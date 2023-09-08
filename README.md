@@ -3,6 +3,12 @@ Fed-BioMed demonstrator for the EUCAIM project M9 milestone
 
 ## Instructions for data providers
 
+First, clone the fedbiomed directory
+```bash
+git clone --depth 1 --branch v4.4.3 git@github.com:fedbiomed/fedbiomed.git
+export FEDBIOMED_DIR=$PWD/fedbiomed
+```
+
 ### Infrastructure deployment
 
 You may find deployment instructions for Fed-BioMed at the following [link](https://fedbiomed.org/latest/user-guide/deployment/deployment-vpn/#deploy-on-the-node-side). 
@@ -26,10 +32,19 @@ Copy the node's configuration provided in the repo to the fedbiomed directory
 
 ```bash
 data_provider=bsc  # other options: ub, forth
-mkdir fedbiomed/etc
-cp etc/${data_provider}.json fedbiomed/envs/vpn/docker/node/run_mounts/etc
-cp ../demo_ml/${data_provider}.json fedbiomed/envs/vpn/docker/node/run_mounts/data
-export FEDBIOMED_DIR=$PWD/fedbiomed
+cp etc/${data_provider}.ini fedbiomed/envs/vpn/docker/node/run_mounts/etc
+```
+
+#### ML demo
+
+Clone the data directory
+```bash
+git clone git@github.com:EUCAIM/demo_ml_data.git fedbiomed/envs/vpn/docker/node/run_mounts/data/demo_ml_data
+```
+
+Copy the dataset configuration files to the appropriate location
+```bash
+cp ../demo_ml/${data_provider}.json fedbiomed/envs/vpn/docker/node/run_mounts/data/
 ```
 
 Then start your node
@@ -41,18 +56,13 @@ docker-compose exec -u $(id -u) node bash -ci 'export MPSPDZ_IP=$VPN_IP && expor
 This will open a shell on the container. From that shell you can add a dataset
 ```bash
 data_provider=bsc  # other options: ub, forth
-./scripts/fedbiomed_run node config ${data_provider}.ini --add-dataset-from-file ./etc/${data_provider}.json
+./scripts/fedbiomed_run node config ${data_provider}.ini --add-dataset-from-file /data/demo_ml_data/${data_provider}.json
 ```
 
 Start the node in the background
 ```bash
 nohup ./scripts/fedbiomed_run node start >./fedbiomed_node.out &
 ```
-
-
-
-#### ML demo
-
 
 
 
