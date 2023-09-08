@@ -70,12 +70,12 @@ class MyTrainingPlan(TorchTrainingPlan):
 model_args = {}
 
 training_args = {
-    'batch_size': 8, 
-    'num_updates': 1,
+    'batch_size': 32, 
+    'epochs': 1,
 }
 
 tags =  ['eucaim_dl_demo']
-num_rounds = 2
+num_rounds = 10
 
 exp = Experiment(tags=tags,
                  training_plan_class=MyTrainingPlan,
