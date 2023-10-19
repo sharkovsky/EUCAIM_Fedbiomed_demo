@@ -76,14 +76,14 @@ Download the dataset from [kaggle](https://www.kaggle.com/datasets/paultimothymo
 Then you need to change the directory structure:
 ```bash
 PATH_TO_DOWNLOADED_DATA=<input here the path to where you extracted the archived data>
-CSV_FILE_ID=3_1  # 3_1 for bsc, 3_2 for ub, 3_3 for forth
+CSV_FILE_ID=2_1  # 2_1 for bsc, 2_2 for forth
 while read img; do
   mv $PATH_TO_DOWNLOADED_DATA/chest_xray/train/PNEUMONIA/$img fedbiomed/envs/vpn/docker/node/run_mounts/data/chest_xray/PNEUMONIA/$img
-done < <(tail -n +2 fedbiomed/envs/vpn/docker/node/run_mounts/data/demo_dl_data/data_ids/three_dataseties_scenario/train.pnm.${CSV_FILE_ID}.csv)
+done < <(tail -n +2 fedbiomed/envs/vpn/docker/node/run_mounts/data/demo_dl_data/data_ids/two_datasites_scenario/train.pnm.${CSV_FILE_ID}.csv)
 
 while read img; do
   mv $PATH_TO_DOWNLOADED_DATA/chest_xray/train/NORMAL/$img fedbiomed/envs/vpn/docker/node/run_mounts/data/chest_xray/NORMAL/$img
-done < <(tail -n +2 fedbiomed/envs/vpn/docker/node/run_mounts/data/demo_dl_data/data_ids/three_dataseties_scenario/train.nrm.${CSV_FILE_ID}.csv)
+done < <(tail -n +2 fedbiomed/envs/vpn/docker/node/run_mounts/data/demo_dl_data/data_ids/two_datasites_scenario/train.nrm.${CSV_FILE_ID}.csv)
 ```
 
 Copy the dataset configuration files to the appropriate location (the same file for all data providers)
