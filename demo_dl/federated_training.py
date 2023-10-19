@@ -74,7 +74,7 @@ training_args = {
     'epochs': 1,
 }
 
-tags =  ['eucaim_dl_demo']
+tags =  ['eucaim_dl_demo_2']
 num_rounds = 10
 
 exp = Experiment(tags=tags,

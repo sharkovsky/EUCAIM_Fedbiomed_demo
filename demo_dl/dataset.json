@@ -1,7 +1,7 @@
 {
     "name": "EUCAIM M9 demo dl data",
     "data_type": "images",
-    "tags": "eucaim_demo_dl",
+    "tags": "eucaim_demo_dl_2",
     "description": "",
     "path": "/data/demo_dl_data/data/chest_xray"
 }

@@ -21,7 +21,7 @@ training_args = {
     'log_interval': 100
 }
 
-tags =  ['eucaim_demo_ml']
+tags =  ['eucaim_demo_ml_2']
 num_rounds = 20
 
 class SGDRegressorTrainingPlan(FedSGDRegressor):
