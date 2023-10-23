@@ -61,7 +61,7 @@ This will open a shell on the container. From that shell you can add a dataset
 
 Start the node in the background
 ```bash
-nohup ./scripts/fedbiomed_run node start >./fedbiomed_node.out &
+nohup ./scripts/fedbiomed_run node config ${data_provider}.ini start >./fedbiomed_node.out &
 ```
 
 
@@ -104,7 +104,7 @@ This will open a shell on the container. From that shell you can add a dataset
 
 Start the node in the background
 ```bash
-nohup ./scripts/fedbiomed_run node start >./fedbiomed_node.out &
+nohup ./scripts/fedbiomed_run node config ${data_provider}.ini start >./fedbiomed_node.out &
 ```
 
 ## Instructions for the data scientist
