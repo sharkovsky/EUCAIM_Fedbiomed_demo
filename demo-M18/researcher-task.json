@@ -1,0 +1,78 @@
+{
+    "_id": "eucaim-fl-fedbiomed-vpn-researcher",
+    "name": "eucaim-fl-fedbiomed-vpn-researcher",
+    "author": "Fed-BioMed@INRIA",
+    "version": "1.0",
+    "permissions": "public",
+    "visibility": "public",
+    "launcher": [
+      "docker"
+    ],
+    "image": {
+      "label": "registry.gitlab.bsc.es/eucaim/docker-registry/fedbiomed-vpn-researcher",
+      "hash": "2d6120d72b74719696bdd401d5759d9c7c9802e307d5468e145f3f55e83530ae",
+      "url": "registry.gitlab.bsc.es/eucaim/docker-registry/fedbiomed-vpn-researcher:latest",
+      "cmd": ""
+    },
+    "type": [
+      "docker"
+    ],
+    "port_mappings": [
+      {
+        "container_port": 8888,
+        "host_port": 8888
+      },
+      {
+        "container_port": 6007,
+        "host_port": 6006
+      },
+      {
+        "container_port": 14000,
+        "host_port": 14000
+      }
+    ],
+    "var_envs": {},
+    "volumes": [
+      {
+        "container_path": "/config",
+        "host_path": "$SANDBOX_PATH/EUCAIM_Fedbiomed_demo/demo-M18/run_mounts/researcher/config"
+      },
+      {
+        "container_path": "/data",
+        "host_path": "$DATA_PATH"
+      },
+      {
+        "container_path": "/fedbiomed/etc",
+        "host_path": "$SANDBOX_PATH/EUCAIM_Fedbiomed_demo/demo-M18/run_mounts/researcher/etc"
+      },
+      {
+        "container_path": "/fedbiomed/notebooks/samples",
+        "host_path": "$SANDBOX_PATH/EUCAIM_Fedbiomed_demo/demo-M18/run_mounts/researcher/samples"
+      },
+      {
+        "container_path": "/fedbiomed/runs",
+        "host_path": "$SANDBOX_PATH/EUCAIM_Fedbiomed_demo/demo-M18/run_mounts/researcher/runs"
+      },
+      {
+        "container_path": "/fedbiomed/var",
+        "host_path": "$SANDBOX_PATH/EUCAIM_Fedbiomed_demo/demo-M18/run_mounts/researcher/var"
+      }
+    ],
+    "cpus": "",
+    "memory": "",
+    "gpus": "",
+    "inputs": "",
+    "arguments": "",
+    "outputs": {
+      "model_dir": "",
+      "move_to": ""
+    },
+    "persistent": false,
+    "pre_checks": true,
+    "source_code": {},
+    "device": "/dev/net/tun",
+    "cap_add": [
+      "NET_ADMIN",
+      "SYS_MODULE"
+    ]
+}
