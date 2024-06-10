@@ -5,6 +5,12 @@
     "version": "1.0",
     "permissions": "public",
     "visibility": "public",
+    "launcher": [
+      "generic"
+    ],
+    "type": [
+      "generic"
+    ],
     "persistent": false,
     "pre_checks": true,
     "source_code": {
