@@ -1,0 +1,50 @@
+{
+    "_id": "eucaim-fl-fedbiomed-vpn-server",
+    "name": "eucaim-fl-fedbiomed-vpn-server",
+    "author": "Fed-BioMed@INRIA",
+    "version": "1.0",
+    "permissions": "public",
+    "visibility": "public",
+    "launcher": [
+      "docker"
+    ],
+    "image": {
+      "label": "registry.gitlab.bsc.es/eucaim/docker-registry/fedbiomed-vpn-server",
+      "hash": "c2e6dedf8e5a82f57885d8709ba548a0fe7481470cd6daffca863c51cc411dbb",
+      "url": "registry.gitlab.bsc.es/eucaim/docker-registry/fedbiomed-vpn-server:latest",
+      "cmd": ""
+    },
+    "type": [
+      "docker"
+    ],
+    "port_mappings": {
+      "container_port": "51820/udp",
+      "host_port": 51820
+    },
+    "var_envs": {},
+    "volumes": [
+      {
+        "container_path": "/config",
+        "host_path": "$SANDBOX_PATH/EUCAIM_Fedbiomed_demo/demo-M18/run_mounts/vpnserver/config"
+      }
+    ],
+    "cpus": "",
+    "memory": "",
+    "gpus": "",
+    "inputs": "",
+    "arguments": "",
+    "outputs": {
+      "model_dir": "",
+      "move_to": ""
+    },
+    "persistent": false,
+    "pre_checks": true,
+    "source_code": {
+      "url": "https://github.com/sharkovsky/EUCAIM_Fedbiomed_demo.git"
+    },
+    "device": "/dev/net/tun",
+    "cap_add": [
+      "NET_ADMIN",
+      "SYS_MODULE"
+    ]
+}
