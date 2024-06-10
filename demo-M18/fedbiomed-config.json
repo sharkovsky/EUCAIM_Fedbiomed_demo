@@ -1,0 +1,13 @@
+{
+    "_id": "eucaim-fl-fedbiomed-vpn-config",
+    "name": "eucaim-fl-fedbiomed-vpn-config",
+    "author": "Fed-BioMed@INRIA",
+    "version": "1.0",
+    "permissions": "public",
+    "visibility": "public",
+    "persistent": false,
+    "pre_checks": true,
+    "source_code": {
+      "url": "https://github.com/sharkovsky/EUCAIM_Fedbiomed_demo.git"
+    }
+}
