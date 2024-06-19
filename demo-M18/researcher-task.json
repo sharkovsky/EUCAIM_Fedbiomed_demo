@@ -10,8 +10,8 @@
     ],
     "image": {
       "label": "registry.gitlab.bsc.es/eucaim/docker-registry/fedbiomed-vpn-researcher",
-      "hash": "2d6120d72b74719696bdd401d5759d9c7c9802e307d5468e145f3f55e83530ae",
-      "url": "registry.gitlab.bsc.es/eucaim/docker-registry/fedbiomed-vpn-researcher:latest",
+      "hash": "",
+      "url": "registry.gitlab.bsc.es/eucaim/docker-registry/fedbiomed-vpn-researcher:dev-001",
       "cmd": ""
     },
     "type": [
