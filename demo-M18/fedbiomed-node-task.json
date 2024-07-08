@@ -1,0 +1,46 @@
+{
+    "_id": "eucaim-fl-fedbiomed-vpn-node",
+    "name": "eucaim-fl-fedbiomed-vpn-node",
+    "author": "Fed-BioMed@INRIA",
+    "version": "1.0",
+    "permissions": "public",
+    "visibility": "public",
+    "launcher": [
+      "docker"
+    ],
+    "image": {
+      "label": "registry.gitlab.bsc.es/eucaim/docker-registry/fedbiomed-vpn-node",
+      "hash": "",
+      "url": "registry.gitlab.bsc.es/eucaim/docker-registry/fedbiomed-vpn-node:dev-001",
+      "cmd": ""
+    },
+    "type": [
+      "docker"
+    ],
+    "port_mappings": [],
+    "volumes": [
+      {
+        "container_path": "/config",
+        "host_path": "$SANDBOX_PATH/EUCAIM_Fedbiomed_demo/demo-M18/run_mounts/node_${FL_HOST_NAME}/config"
+      },
+      {
+        "container_path": "/data",
+        "host_path": "$DATA_PATH"
+      },
+      {
+        "container_path": "/fedbiomed/etc",
+        "host_path": "$SANDBOX_PATH/EUCAIM_Fedbiomed_demo/demo-M18/run_mounts/node_${FL_HOST_NAME}/etc"
+      },
+      {
+        "container_path": "/fedbiomed/var",
+        "host_path": "$SANDBOX_PATH/EUCAIM_Fedbiomed_demo/demo-M18/run_mounts/node_${FL_HOST_NAME}/var"
+      }
+    ],
+    "persistent": false,
+    "pre_checks": true,
+    "device": "/dev/net/tun",
+    "cap_add": [
+      "NET_ADMIN",
+      "SYS_MODULE"
+    ]
+}
